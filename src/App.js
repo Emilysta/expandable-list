@@ -1,23 +1,55 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import './App.scss';
+import { checkUploadedFile, loadData } from './Data';
+import ExpandableList from './ExpandableList';
 
 function App() {
+  const [data, setData] = useState(loadData);
+  const [file, setFile] = useState(null);
+  console.log(data);
+  function onChange(e) {
+    const reader = new FileReader();
+    reader.onload = function (evt) {
+      const file = evt.target.result;
+      const parsedFile = JSON.parse(file);
+      const result = checkUploadedFile(parsedFile);
+      if (result)
+        setFile(parsedFile);
+      else
+        console.log('problems');
+    };
+    reader.readAsText(e.target.files[0]);
+  }
+
+
+  function generateList(e) {
+    setData(file);
+    console.log(file);
+    e.target.disabled = true;
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Softwarely recruitment task
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
+      <main id='main'>
+        <label htmlFor='fileDrop'>
+
+        </label>
+        <input type='file' accept='.json' id='fileDrop' multiple={false} onChange={onChange} />
+        <div className='expandableListBox'>
+          <h2>List</h2>
+          <button type="button" onClick={generateList} >
+            Generate list from uploaded file
+          </button>
+          <ul className='tree'>
+            <ExpandableList data={data} />
+          </ul>
+        </div>
+      </main>
     </div>
   );
 }

@@ -1,0 +1,49 @@
+{
+    "title": "Expandable nested list",
+    "description": "This document specifies file schema for expandable nested list",
+    "type": "object",
+    "properties": {
+        "listType": {
+            "description": "A list type: checkbox | radio",
+            "type": "string",
+            "enum": [
+                "checkbox",
+                "radio"
+            ]
+        },
+        "fontSize": {
+            "description": "Size of letters for item Name. Default value: 16",
+            "type": "number",
+            "minimum": 5,
+            "default": 16
+        },
+        "itemName": {
+            "description": "Item name",
+            "type": "array",
+            "items": {
+                "description": "List of rows of name",
+                "type": "string"
+            },
+            "minItems": 1,
+            "uniqueItems": false
+        },
+        "children": {
+            "description": "Nested items",
+            "type": "array",
+            "items": {
+                "$ref": "#"
+            },
+            "minItems": 1,
+            "uniqueItems": false
+        }
+    },
+    "required": [
+        "itemName"
+    ],
+    "dependentRequired": {
+        "children": [
+            "listType"
+        ]
+    },
+    "additionalProperties": false
+}

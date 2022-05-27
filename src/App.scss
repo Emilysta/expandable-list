@@ -1,0 +1,59 @@
+@use '_lib' as lib;
+
+.App {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+}
+
+.App-header {
+  text-align: center;
+  background-color: lib.$gray;
+  width: 100%;
+  font-size: calc(10px + 2vmin);
+  padding: 20px 0;
+}
+
+.App-header p {
+  margin: 0;
+  padding: 0;
+}
+
+#main {
+  padding-top: 1vh;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  align-items: center;
+  overflow: hidden;
+}
+
+#fileDrop {
+  background-color: lib.$gray;
+  min-height: 5vh;
+  border-radius: 10px;
+}
+
+.expandableListBox {
+  width: 50%;
+  border-radius: 10px;
+  background-color: lib.$gray;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin: 10px 0px;
+  padding: 20px;
+  overflow: scroll;
+}
+
+.expandableListBox h2 {
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}

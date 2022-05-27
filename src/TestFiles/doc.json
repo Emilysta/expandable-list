@@ -1,0 +1,142 @@
+{
+    "listType": "checkbox",
+    "fontSize": 25,
+    "itemName": [
+        "Nagłówek drzewa",
+        "wielowierszowy"
+    ],
+    "children": [
+        {
+            "listType": "radio",
+            "itemName": [
+                "Pododdział 1"
+            ],
+            "children": [
+                {
+                    "itemName": [
+                        "Zespół 1",
+                        "HR"
+                    ]
+                },
+                {
+                    "itemName": [
+                        "Zespół 2",
+                        "Marketing"
+                    ]
+                },
+                {
+                    "listType": "checkbox",
+                    "itemName": [
+                        "Zespół 3",
+                        "Analitycy"
+                    ],
+                    "children": [
+                        {
+                            "itemName": [
+                                "Podzespół 3.1",
+                                "Kalendarz"
+                            ]
+                        },
+                        {
+                            "itemName": [
+                                "Podzespół 3.2",
+                                "Kokpit"
+                            ]
+                        },
+                        {
+                            "itemName": [
+                                "Podzespół 3.3",
+                                "Widok"
+                            ]
+                        },
+                        {
+                            "itemName": [
+                                "Podzespół 3.4",
+                                "Różności"
+                            ]
+                        },
+                        {
+                            "fontSize": 20,
+                            "itemName": [
+                                "Podzespół 3.5",
+                                "Szukaj"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "listType": "checkbox",
+                    "itemName": [
+                        "Zespół 4",
+                        "Programiści"
+                    ],
+                    "children": [
+                        {
+                            "fontSize": 20,
+                            "itemName": [
+                                "Podzespół 4.1",
+                                "Front-end"
+                            ]
+                        },
+                        {
+                            "itemName": [
+                                "Podzespół 4.2",
+                                "Middle-front-end"
+                            ]
+                        },
+                        {
+                            "itemName": [
+                                "Podzespół 4.3",
+                                "Middle-end"
+                            ]
+                        },
+                        {
+                            "itemName": [
+                                "Podzespół 4.4",
+                                "Middle-back-end"
+                            ]
+                        },
+                        {
+                            "itemName": [
+                                "Podzespół 4.5",
+                                "Back-end"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "listType": "radio",
+            "itemName": [
+                "Pododdział 2"
+            ],
+            "children": [
+                {
+                    "itemName": [
+                        "Test"
+                    ]
+                }
+            ]
+        },
+        {
+            "itemName": [
+                "Pododdział 3"
+            ]
+        },
+        {
+            "listType": "radio",
+            "fontSize": 20,
+            "itemName": [
+                "Niezrzeszeni"
+            ],
+            "children": [
+                {
+                    "itemName": [
+                        "No"
+                    ]
+                }
+            ]
+        }
+    ]
+}

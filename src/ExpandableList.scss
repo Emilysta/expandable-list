@@ -1,0 +1,151 @@
+@use '_lib' as lib;
+
+.inputContainer {
+    display: flex;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    width: 20px;
+    height: 16px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.inputContainer input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 15px;
+    width: 16px;
+    margin: 0;
+}
+
+/* horizontal lines before inputes*/
+.inputContainer {
+    &::before {
+        position: absolute;
+        top: calc(50% - 17px);
+        left: -12px;
+        content: '';
+        width: 8px;
+        height: 16px;
+        bottom: 0px;
+        // border-left: 1px solid blue;
+        // border-bottom: 1px solid green;
+        //background-color: violet;
+    }
+}
+
+.inputContainer span {
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    height: 15px;
+    width: 16px;
+    content: url(./Assets/DashCircleFill.svg);
+}
+
+.inputContainer input[type=checkbox] {
+    &~span {
+        content: url(./Assets/PlusSquareFill.svg);
+    }
+
+    &:checked~span {
+        content: url(./Assets/DashSquareFill.svg);
+    }
+}
+
+.inputContainer input[type=radio] {
+    &~span {
+        content: url(./Assets/PlusCircleFill.svg);
+    }
+
+    &:checked~span {
+        content: url(./Assets/DashCircleFill.svg);
+    }
+}
+
+.firstLabelContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.nestedContainer {
+    margin-left: 20px;
+}
+
+.nestedContainerChild {
+    position: relative;
+}
+
+.nestedContainerChild {
+
+
+    &:not(:last-child) {
+
+        /* vertical lines before nested lists*/
+        &::after {
+            position: absolute;
+            top: 0px;
+            left: -12px;
+            content: '';
+            width: 1px;
+            bottom: 0px;
+            background-color: lib.$light-gray;
+        }
+
+        /* horizontal lines before nested lists*/
+        &::before {
+            position: absolute;
+            top: 0px;
+            left: -12px;
+            content: '';
+            height: 0.7em;
+            width: 8px;
+            border-left: 1px solid lib.$light-gray;
+            border-bottom: 1px solid lib.$light-gray;
+            background-color: transparent;
+        }
+    }
+
+    /* vertical and horizontal lines before last li*/
+    &:last-child {
+        &::before {
+            position: absolute;
+            top: 0px;
+            left: -12px;
+            content: '';
+            height: 0.7em;
+            width: 8px;
+            border-left: 1px solid lib.$light-gray;
+            border-bottom: 1px solid lib.$light-gray;
+            background-color: transparent;
+        }
+    }
+}
+
+.li {
+    position: relative;
+}
+
+.li {
+
+    /* not last with class li*/
+    &:not(:last-child) {
+
+        /* vertical lines before li*/
+        &::after {
+            position: absolute;
+            top: 0px;
+            left: -12px;
+            content: '';
+            width: 1px;
+            bottom: 0px;
+            background-color: lib.$light-gray;
+        }
+    }
+}
