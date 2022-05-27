@@ -45,9 +45,7 @@ function App() {
           <button type="button" onClick={generateList} >
             Generate list from uploaded file
           </button>
-          <ul className='tree'>
-            <ExpandableList data={data} />
-          </ul>
+          <ExpandableList data={data} />
         </div>
       </main>
     </div>

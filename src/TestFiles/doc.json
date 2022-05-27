@@ -9,7 +9,9 @@
         {
             "listType": "radio",
             "itemName": [
-                "Pododdział 1"
+                "Pododdział 1",
+                "lol",
+                "txt"
             ],
             "children": [
                 {

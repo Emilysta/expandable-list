@@ -2,49 +2,31 @@
 
 .inputContainer {
     display: flex;
+    flex-direction: row;
     position: relative;
+    align-items: center;
     margin: 0;
     padding: 0;
-    width: 20px;
-    height: 16px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+    width: fit-content;
+    height: fit-content;
 }
 
 .inputContainer input {
     position: absolute;
     opacity: 0;
     cursor: pointer;
-    height: 15px;
-    width: 16px;
+    height: 16px;
+    width: 20px;
     margin: 0;
 }
 
-/* horizontal lines before inputes*/
-.inputContainer {
-    &::before {
-        position: absolute;
-        top: calc(50% - 17px);
-        left: -12px;
-        content: '';
-        width: 8px;
-        height: 16px;
-        bottom: 0px;
-        // border-left: 1px solid blue;
-        // border-bottom: 1px solid green;
-        //background-color: violet;
-    }
-}
-
 .inputContainer span {
-    position: absolute;
+    //position: absolute;
     pointer-events: none;
     top: 0;
     left: 0;
-    height: 15px;
-    width: 16px;
+    height: 16px;
+    width: 20px;
     content: url(./Assets/DashCircleFill.svg);
 }
 
@@ -68,10 +50,26 @@
     }
 }
 
-.firstLabelContainer {
+.labelsContainer {
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
+}
+
+.paddingLabels {
+    margin-left: 20px;
+    position: relative;
+
+    &::before {
+        position: absolute;
+        top: 0px;
+        left: -10px;
+        content: '';
+
+        bottom: 0px;
+        border-left: 1px solid lib.$light-gray;
+        border-bottom: 1px solid lib.$light-gray;
+        background-color: transparent;
+    }
 }
 
 .nestedContainer {
@@ -83,15 +81,13 @@
 }
 
 .nestedContainerChild {
-
-
     &:not(:last-child) {
 
         /* vertical lines before nested lists*/
         &::after {
             position: absolute;
             top: 0px;
-            left: -12px;
+            left: -10px;
             content: '';
             width: 1px;
             bottom: 0px;
@@ -102,7 +98,7 @@
         &::before {
             position: absolute;
             top: 0px;
-            left: -12px;
+            left: -10px;
             content: '';
             height: 0.7em;
             width: 8px;
@@ -117,7 +113,7 @@
         &::before {
             position: absolute;
             top: 0px;
-            left: -12px;
+            left: -10px;
             content: '';
             height: 0.7em;
             width: 8px;
@@ -141,7 +137,7 @@
         &::after {
             position: absolute;
             top: 0px;
-            left: -12px;
+            left: -10px;
             content: '';
             width: 1px;
             bottom: 0px;
