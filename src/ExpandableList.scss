@@ -46,6 +46,10 @@ li input {
     }
 }
 
+.isEven {
+    background-color: lib.$light-gray;
+}
+
 input[type=checkbox] {
     background-image: url(./Assets/PlusSquareFill.svg);
 

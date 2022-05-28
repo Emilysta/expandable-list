@@ -10,6 +10,7 @@ export default function ExpandableList(props) {
     let labels = data.itemName;
 
     let fontSize = data.fontSize ? data.fontSize + "px" : '16px';
+    let isEven = props.isEven;
 
     if (data.children)
         return (<>
@@ -36,7 +37,7 @@ export default function ExpandableList(props) {
                     <div className={`nestedContainer`} >
                         {
                             data.children?.map((item, i) =>
-                                <ExpandableList data={item} level={level + 1} className={'nestedContainerChild'} key={i} />
+                                <ExpandableList data={item} level={level + 1} className={'nestedContainerChild'} key={i} isEven={i % 2 === 0} />
                             )
                         }
                     </div>
@@ -48,7 +49,7 @@ export default function ExpandableList(props) {
     else
         return (
             <div className={`li ${props.className ? props.className : ''}`}>
-                <div className="labelContainer" style={{ fontSize: fontSize }}>
+                <div className={`labelContainer  ${isEven ? 'isEven' : ''}`} style={{ fontSize: fontSize }}>
                     {
                         labels?.map((label, i) => {
                             return (<p key={i}>{label}</p>)
