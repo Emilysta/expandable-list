@@ -43,6 +43,9 @@
     "dependentRequired": {
         "children": [
             "listType"
+        ],
+        "listType": [
+            "children"
         ]
     },
     "additionalProperties": false
