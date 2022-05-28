@@ -1,4 +1,7 @@
 @use '_lib' as lib;
+@use "sass:math" as math;
+
+$left : math.div(- lib.$input-width, 2) - math.div(lib.$line-width, 2);
 
 .inputContainer {
     display: flex;
@@ -9,126 +12,101 @@
     padding: 0;
     width: fit-content;
     height: fit-content;
-}
 
-.inputContainer input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 16px;
-    width: 20px;
-    margin: 0;
-}
-
-.inputContainer span {
-    //position: absolute;
-    pointer-events: none;
-    top: 0;
-    left: 0;
-    height: 16px;
-    width: 20px;
-    content: url(./Assets/DashCircleFill.svg);
-}
-
-.inputContainer input[type=checkbox] {
-    &~span {
-        content: url(./Assets/PlusSquareFill.svg);
-    }
-
-    &:checked~span {
-        content: url(./Assets/DashSquareFill.svg);
+    & span {
+        pointer-events: none;
+        width: lib.$input-width;
     }
 }
 
-.inputContainer input[type=radio] {
-    &~span {
-        content: url(./Assets/PlusCircleFill.svg);
-    }
-
-    &:checked~span {
-        content: url(./Assets/DashCircleFill.svg);
-    }
-}
-
-.labelsContainer {
-    display: flex;
-    flex-direction: column;
-}
-
-.paddingLabels {
-    margin-left: 20px;
+li {
     position: relative;
+}
 
-    &::before {
-        position: absolute;
-        top: 0px;
-        left: -10px;
-        content: '';
+li input {
+    background-image: url(./Assets/PlusSquareFill.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    position: absolute;
+    margin: 0;
+    font: inherit;
+    cursor: pointer;
+    height: 1.3em;
+    width: lib.$input-width;
 
-        bottom: 0px;
-        border-left: 1px solid lib.$light-gray;
-        border-bottom: 1px solid lib.$light-gray;
-        background-color: transparent;
+    &~.labelContainer {
+        & .paddingLabels {
+            &::before {
+                border-color: transparent;
+            }
+        }
+    }
+}
+
+input[type=checkbox] {
+    background-image: url(./Assets/PlusSquareFill.svg);
+
+    &:checked {
+        background-image: url(./Assets/DashSquareFill.svg);
+    }
+}
+
+input[type=radio] {
+
+    background-image: url(./Assets/PlusCircleFill.svg);
+
+    &:checked {
+        background-image: url(./Assets/DashCircleFill.svg);
     }
 }
 
 .nestedContainer {
-    margin-left: 20px;
+    margin-left: lib.$input-width;
+    transition: max-height 0.1s ease-in, opacity 0.5s ease;
+    opacity: 0;
+    max-height: 0px;
+    overflow: hidden;
+}
+
+input:checked {
+    &~.nestedContainer {
+        opacity: 1;
+        max-height: 10000000000px;
+        overflow: visible;
+    }
+
+    &~.labelContainer {
+        & .paddingLabels {
+            &::before {
+                border-color: lib.$light-gray;
+            }
+        }
+    }
 }
 
 .nestedContainerChild {
     position: relative;
-}
 
-.nestedContainerChild {
     &:not(:last-child) {
 
         /* vertical lines before nested lists*/
         &::after {
             position: absolute;
             top: 0px;
-            left: -10px;
+            left: $left;
             content: '';
-            width: 1px;
+            width: lib.$line-width;
             bottom: 0px;
             background-color: lib.$light-gray;
-        }
-
-        /* horizontal lines before nested lists*/
-        &::before {
-            position: absolute;
-            top: 0px;
-            left: -10px;
-            content: '';
-            height: 0.7em;
-            width: 8px;
-            border-left: 1px solid lib.$light-gray;
-            border-bottom: 1px solid lib.$light-gray;
-            background-color: transparent;
-        }
-    }
-
-    /* vertical and horizontal lines before last li*/
-    &:last-child {
-        &::before {
-            position: absolute;
-            top: 0px;
-            left: -10px;
-            content: '';
-            height: 0.7em;
-            width: 8px;
-            border-left: 1px solid lib.$light-gray;
-            border-bottom: 1px solid lib.$light-gray;
-            background-color: transparent;
         }
     }
 }
 
 .li {
     position: relative;
-}
-
-.li {
 
     /* not last with class li*/
     &:not(:last-child) {
@@ -137,11 +115,51 @@
         &::after {
             position: absolute;
             top: 0px;
-            left: -10px;
+            left: $left;
             content: '';
-            width: 1px;
+            width: lib.$line-width;
             bottom: 0px;
             background-color: lib.$light-gray;
+        }
+    }
+}
+
+.labelContainer {
+    pointer-events: none;
+
+    &.level0 {
+        &::before {
+            border-width: 0px;
+        }
+    }
+
+    /* horizontal and vertical lines before nested lists*/
+    &::before {
+        position: absolute;
+        top: 0px;
+        left: $left;
+        content: '';
+        height: calc(0.65em - lib.$line-width/2);
+        width: calc(lib.$input-width/2 - 2px);
+        border-left: lib.$line-width solid lib.$light-gray;
+        border-bottom: lib.$line-width solid lib.$light-gray;
+        background-color: transparent;
+    }
+
+    .paddingLabels {
+        margin-left: lib.$input-width;
+        position: relative;
+
+        /* vertical lines before rest of item name*/
+        &::before {
+            position: absolute;
+            top: 0px;
+            left: $left;
+            content: '';
+            bottom: 0px;
+            border-left: lib.$line-width solid lib.$light-gray;
+            border-bottom: lib.$line-width solid lib.$light-gray;
+            background-color: transparent;
         }
     }
 }

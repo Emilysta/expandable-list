@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import './ExpandableList.scss';
 
 export default function ExpandableList(props) {
@@ -10,64 +9,52 @@ export default function ExpandableList(props) {
     let data = props.data;
     let labels = data.itemName;
 
-
-    function onChange(e) {
-        if (e.target.type === "radio") {
-            e.preventDefault();
-            const elements = document.getElementsByName(e.target.name);
-            console.log(elements);
-            elements.forEach(element => {
-                element.checked = false;
-            });
-            e.target.checked = true;
-        }
-    }
-    
     let fontSize = data.fontSize ? data.fontSize + "px" : '16px';
 
     if (data.children)
-        return (
+        return (<>
             <ul className={`${props.className ? props.className : ''}`}>
-                <li>
-                    <div className="labelsContainer" style={{ fontSize: fontSize }}>
+                <li style={{ fontSize: fontSize }}>
+                    <input type={data.listType} name={`fieldset_${level}`} />
+                    <div className={`labelContainer ${level === 1 ? 'level0' : ''}`} >
                         {data.listType && <div className="inputContainer">
-                            <input type={data.listType} name={`fieldset_${level}`} />
                             <span></span>
                             <p>{labels[0]}</p>
                         </div>}
                         <div className="paddingLabels">
                             {labels.slice(1).map((label, i) => {
-                                return (<p key={i}>{label}</p>)
+                                return (
+                                    <p key={i}>
+                                        {label}
+                                    </p>)
                             })
                             }
                         </div>
                     </div>
 
 
-                    <div className="nestedContainer" name={`fieldset_${level}`} >
+                    <div className={`nestedContainer`} >
                         {
-                            data.children?.map((item, i) => <ExpandableList data={item} level={level + 1} className={'nestedContainerChild'} key={i}/>
+                            data.children?.map((item, i) =>
+                                <ExpandableList data={item} level={level + 1} className={'nestedContainerChild'} key={i} />
                             )
                         }
                     </div>
+
                 </li>
-            </ul>
+            </ul >
+        </>
         )
     else
         return (
             <div className={`li ${props.className ? props.className : ''}`}>
-                <div className="firstLabelContainer" style={{ fontSize: fontSize }}>
-                    {data.listType && <div className="inputContainer">
-                        <input type={data.listType} name={`fieldset_${level}`} />
-                        <span></span>
-                    </div>}
-                    {labels[0]}
+                <div className="labelContainer" style={{ fontSize: fontSize }}>
+                    {
+                        labels?.map((label, i) => {
+                            return (<p key={i}>{label}</p>)
+                        })
+                    }
                 </div>
-                {
-                    labels.slice(1)?.map((label, i) => {
-                        return (<p style={{ fontSize: fontSize }} key={i}>{label}</p>)
-                    })
-                }
             </div>
         )
 }

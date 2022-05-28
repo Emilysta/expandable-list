@@ -15,11 +15,6 @@
   padding: 20px 0;
 }
 
-.App-header p {
-  margin: 0;
-  padding: 0;
-}
-
 #main {
   padding-top: 1vh;
   flex: 1;
@@ -50,6 +45,8 @@
 
 .expandableListBox h2 {
   text-align: center;
+  margin: 0;
+  margin-bottom: 10px;
 }
 
 ul {
@@ -60,4 +57,31 @@ ul {
 
 p {
   white-space: break-spaces;
+}
+
+.buttonLabel {
+  padding: 10px;
+  border-radius: 5px;
+  background-color: lib.$gray;
+}
+
+.buttonLabel:hover {
+  background-color: lib.$light-gray;
+}
+
+.generateButton {
+  color: lib.$text-color;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: lib.$light-gray;
+  border: none;
+}
+
+.generateButton:hover {
+  background-color: #6e788f;
+}
+
+.generateButton:disabled {
+  background-color: lib.$main-background;
+  color: #5e626b;
 }

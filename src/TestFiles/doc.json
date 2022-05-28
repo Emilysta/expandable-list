@@ -1,6 +1,5 @@
 {
     "listType": "checkbox",
-    "fontSize": 25,
     "itemName": [
         "Nagłówek drzewa",
         "wielowierszowy"
@@ -9,9 +8,7 @@
         {
             "listType": "radio",
             "itemName": [
-                "Pododdział 1",
-                "lol",
-                "txt"
+                "Pododdział 1"
             ],
             "children": [
                 {
@@ -58,7 +55,6 @@
                             ]
                         },
                         {
-                            "fontSize": 20,
                             "itemName": [
                                 "Podzespół 3.5",
                                 "Szukaj"
@@ -122,22 +118,22 @@
             ]
         },
         {
+            "listType": "radio",
             "itemName": [
                 "Pododdział 3"
-            ]
-        },
-        {
-            "listType": "radio",
-            "fontSize": 20,
-            "itemName": [
-                "Niezrzeszeni"
             ],
             "children": [
                 {
                     "itemName": [
-                        "No"
+                        "Test"
                     ]
                 }
+            ]
+        },
+        {
+            "fontSize": 20,
+            "itemName": [
+                "Niezrzeszeni"
             ]
         }
     ]
